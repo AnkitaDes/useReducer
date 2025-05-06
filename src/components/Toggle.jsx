@@ -10,6 +10,7 @@ function reducer(state, action) {
       return state;
   }
 }
+
 export default function Toggle() {
   const [state, dispatch] = useReducer(reducer, initialState);
   return (
