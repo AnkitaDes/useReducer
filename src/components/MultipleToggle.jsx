@@ -12,7 +12,6 @@ function reducer(state, action) {
       return { ...state, darkMode: !state.darkMode };
     case "TOGGLE_MODAL":
       return { ...state, modal: !state.modal };
-
     default:
       return state;
   }
@@ -22,9 +21,9 @@ export default function MultipleToggle() {
   const [state, dispatch] = useReducer(reducer, initialState);
   return (
     <div
-      className={`${
+      className={`relative min-h-screen transition-colors duration-500 ${
         state.darkMode ? "bg-gray-800 text-white" : "bg-white text-black"
-      }  p-10 text-center`}
+      }  p-10 text-center min-w-sm max-w-3xl mx-auto rounded-xl`}
     >
       <h1 className="p-5 font-bold text-2xl">Multiple Toggle</h1>
       <button
@@ -34,17 +33,25 @@ export default function MultipleToggle() {
         {state.darkMode ? "Disable darkMode" : "Enable darkMode"}
       </button>
       <button
-        className="bg-blue-600 text-white font-bold px-4 py-3 rounded-md ml-4 mt-10"
+        className="bg-green-600 text-white font-bold px-4 py-3 rounded-md ml-4 mt-10"
         onClick={() => dispatch({ type: "TOGGLE_MODAL" })}
       >
-        {" "}
-        {state.modal ? "Close Modal" : "Open Modal"}
+        {state.modal ? "Hide Modal" : "Show Modal"}
       </button>
 
       {state.modal && (
-        <div className="bg-gray-200 p-5 mt-10 z-50 rounded-lg w-1/2 mx-auto text-gray-700 transition-all duration-500 ease-in-out animate-fadeIn">
-          <p className=" p-5">This is a modal window</p>
-        </div>
+        <>
+          <div className="absolute inset-0 bg-black opacity-30 z-40 rounded-xl"></div>
+          <div className=" absolute top-1/2 left-1/2 w-2/3 transform -translate-x-1/2 -translate-y-1/2 max-w-md  bg-white p-6 shadow-xl mt-10 z-50 rounded-xl text-gray-700 transition-all duration-500 ease-in-out scale-100 opacity-100">
+            <button
+              className="absolute top-3 right-5 text-xl font-bold text-gray-500 hover:text-gray-800 "
+              onClick={() => dispatch({ type: "TOGGLE_MODAL" })}
+            >
+              x
+            </button>
+            <p className="p-5">This is a modal window</p>
+          </div>
+        </>
       )}
     </div>
   );

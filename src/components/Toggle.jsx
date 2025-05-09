@@ -14,7 +14,7 @@ function reducer(state, action) {
 export default function Toggle() {
   const [state, dispatch] = useReducer(reducer, initialState);
   return (
-    <div className="bg-gray-200 rounded-xl p-5 mt-10 mx-auto text-center ">
+    <div className="bg-gray-200 rounded-xl p-5 mt-10 mx-auto text-center min-w-sm max-w-3xl">
       <h1 className="bg-amber-200 rounded-xl p-5 font-bold text-2xl">Toggle</h1>
       {state && (
         <p className="bg-gray-300 rounded-xl p-5 mt-10 ">

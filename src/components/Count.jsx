@@ -21,7 +21,7 @@ export default function Counter() {
   const [state, dispatch] = useReducer(countReducer, initialState);
 
   return (
-    <div className="bg-gray-300 rounded-xl mx-auto p-5 text-center">
+    <div className="bg-gray-300 rounded-xl mx-auto p-5 text-center min-w-sm max-w-3xl">
       <h1 className="bg-amber-200 rounded-xl p-5 font-bold text-2xl">
         Counter with Reducer Hook
       </h1>
