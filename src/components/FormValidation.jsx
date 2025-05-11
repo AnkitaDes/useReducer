@@ -29,7 +29,7 @@ const reducer = (state, action) => {
         isSubmitted: Object.keys(errors).length === 0,
       };
     case "RESET_FORM":
-      return { initialState };
+      return initialState;
     default:
       return state;
   }
@@ -40,6 +40,10 @@ export default function FormValidation() {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch({ type: "VALIDATE_FORM" });
+  };
+  const handleReset = (e) => {
+    e.preventDefault();
+    dispatch({ type: "RESET_FORM" });
   };
 
   return (
@@ -92,9 +96,15 @@ export default function FormValidation() {
         </button>
         {state.isSubmitted && (
           <p className="text-green-600 text-lg font-medium mt-4">
-            Form is submitted ssuccessfully
+            Form is submitted successfully
           </p>
         )}
+        <button
+          className="bg-green-500 text-xl font-bold text-white px-5 py-3 rounded-xl mt-5 hover:bg-blue-800 max-w-lg mx-auto"
+          onClick={handleReset}
+        >
+          Reset
+        </button>
       </form>
     </div>
   );
